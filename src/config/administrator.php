@@ -129,4 +129,18 @@ return array(
 	 */
 	'locales' => array(),
 
+    /**
+     * Subdomain to use for the admin.
+     *
+     * @type string
+     */
+    'domain' => '',
+
+    /**
+     * Before filters to use for administrator routes.
+     *
+     * @type string
+     */
+    'route_before_filter' => 'validate_admin|force.ssl',
+
 );

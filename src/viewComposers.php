@@ -34,7 +34,7 @@ View::composer('administrator::index', function($view)
 	$view->formWidth = $config->getOption('form_width');
 	$view->baseUrl = $baseUrl;
 	$view->assetUrl = URL::to('packages/frozennode/administrator/');
-	$view->route = $route['path'].'/';
+	$view->route = (array_key_exists('path', $route) ? $route['path'] : '').'/';
 	$view->itemId = isset($view->itemId) ? $view->itemId : null;
 });
 

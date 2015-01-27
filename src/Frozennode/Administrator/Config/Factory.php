@@ -70,7 +70,8 @@ class Factory {
 	 * @var array
 	 */
 	protected $rules = array(
-		'uri' => 'required|string',
+		'uri' => 'string',
+		'domain' => 'string',
 		'title' => 'required|string',
 		'model_config_path' => 'required|string|directory',
 		'settings_config_path' => 'required|string|directory',
@@ -81,6 +82,7 @@ class Factory {
 		'home_page' => 'string',
 		'login_path' => 'required|string',
 		'login_redirect_key' => 'required|string',
+		'route_before_filter' => 'required|string',
 	);
 
 	/**

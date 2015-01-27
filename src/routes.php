@@ -3,7 +3,15 @@
 /**
  * Routes
  */
-Route::group(array('prefix' => Config::get('administrator::administrator.uri'), 'before' => 'validate_admin'), function()
+
+Route::filter('force.ssl', function () {
+    if (!Request::secure()) {
+        return Redirect::secure(Request::getRequestUri());
+    }
+
+});
+
+Route::group(array('domain' => Config::get('administrator::administrator.domain'), 'prefix' => Config::get('administrator::administrator.uri'), 'before' => Config::get('administrator::administrator.route_before_filter')), function()
 {
 	//Admin Dashboard
 	Route::get('/', array(
@@ -52,7 +60,7 @@ Route::group(array('prefix' => Config::get('administrator::administrator.uri'), 
 				'uses' => 'Frozennode\Administrator\AdminController@settingsCustomAction'
 			));
 		});
-        
+
 		//Settings file upload
 		Route::post('settings/{settings}/{field}/file_upload', array(
 			'as' => 'admin_settings_file_upload',
